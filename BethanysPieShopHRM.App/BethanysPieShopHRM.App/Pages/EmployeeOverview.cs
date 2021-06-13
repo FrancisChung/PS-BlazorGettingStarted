@@ -13,7 +13,16 @@ namespace BethanysPieShopHRM.App.Pages
         private List<Country> Countries { get; set; }
         private List<JobCategory> JobCategories { get; set; }
 
-		private void InitializeJobCategories()
+        protected override Task OnInitializedAsync()
+        {
+			InitializeCountries();
+			InitializeJobCategories();
+			InitializeEmployees();
+
+            return base.OnInitializedAsync();
+        }
+
+        private void InitializeJobCategories()
 		{
 			JobCategories = new List<JobCategory>()
 			{
