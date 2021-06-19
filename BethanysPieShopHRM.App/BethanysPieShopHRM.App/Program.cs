@@ -1,9 +1,11 @@
-using BethanysPieShopHRM.App.Services;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using BethanysPieShopHRM.App.Services;
 
 namespace BethanysPieShopHRM.App
 {
