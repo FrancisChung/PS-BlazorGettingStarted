@@ -1,8 +1,11 @@
-﻿using System;
+﻿using BethanysPieShopHRM.App.Services;
+using BethanysPieShopHRM.Shared;
+using Microsoft.AspNetCore.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BethanysPieShopHRM.Shared;
+
 
 namespace BethanysPieShopHRM.App.Pages
 {
@@ -10,10 +13,13 @@ namespace BethanysPieShopHRM.App.Pages
     {
         public IEnumerable<Employee> Employees { get; set; }
 
-        protected override Task OnInitializedAsync()
-        {
+        [Inject]
+        public IEmployeeDataService EmployeeDataService { get; set; }
 
-            return base.OnInitializedAsync();
+        protected override async Task OnInitializedAsync()
+        {
+            Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
+            //return base.OnInitializedAsync();
         }
 
 
