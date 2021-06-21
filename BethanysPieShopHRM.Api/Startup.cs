@@ -29,13 +29,12 @@ namespace BethanysPieShopHRM.Api
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
-            services.AddCors(options =>
+			services.AddCors(options =>
             {
-                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader());
+                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
 
             services.AddControllers();
-                //.AddJsonOptions(options => options.JsonSerializerOptions.ca);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

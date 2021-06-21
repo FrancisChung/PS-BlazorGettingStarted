@@ -3,7 +3,11 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
+
+
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+
 body {
     overflow-x: hidden;
     background-image: url('../images/pattern.png');
@@ -204,7 +208,7 @@ nav {
         color: #fff;
         background-color: #a593c2 !important;
         border-color: #a593c2 !important;
-	}
+    }
 
 
 #blazor-error-ui {
