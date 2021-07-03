@@ -47,5 +47,19 @@ namespace BethanysPieShopHRM.App.Pages
             JobCategoryId = Employee.JobCategoryId.ToString();
         }
 
+        protected async Task HandleValidSubmit()
+        {
+            Employee.CountryId = int.Parse(CountryId);
+            Employee.JobCategoryId = int.Parse(JobCategoryId);
+            if (Employee.EmployeeId == 0)
+            {
+                _ = await EmployeeDataService.AddEmployee(Employee);
+            }
+            else
+                await EmployeeDataService.UpdateEmployee(Employee);
+        }
+
+        protected async Task HandleInvalidSubmit() { }
+
     }
 }
