@@ -33,9 +33,16 @@ namespace BethanysPieShopHRM.App.Pages
         protected override async Task OnInitializedAsync()
         {
             Countries = (await CountryDataService.GetAllCountries()).ToList();
-            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             JobCategories = (await JobCategoryDataService.GetAllJobCategories()).ToList();
-            
+
+            int.TryParse(EmployeeId, out var employeeId);
+
+            if (employeeId ==0 ) //new Employee being created
+                Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+            else
+                Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
+
+
             CountryId = Employee.CountryId.ToString();
             JobCategoryId = Employee.JobCategoryId.ToString();
         }
