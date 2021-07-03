@@ -18,5 +18,10 @@ namespace BethanysPieShopHRM.App.Pages
 
         public Employee Employee { get; set; } = new Employee();
 
+        protected override async Task OnInitializedAsync()
+        {
+            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
+        }
+
     }
 }
