@@ -70,5 +70,30 @@
             <InputNumber id="latitude" class="form-control col-sm-8" @bind-Value="@Employee.Latitude"></InputNumber>
         </div>
 
+        <div class="form-group row">
+            <label for="smoker" class=" offset-sm-3">
+                <InputCheckbox id="smoker" @bind-Value="@Employee.Smoker"></InputCheckbox>
+                &nbsp;Smoker
+            </label>
+        </div>
+
+        <div class="form-group row">
+            <label for="jobcategory" class="col-sm-3">Job category: </label>
+            <InputSelect id="jobcategory" class="form-control col-sm-8" @bind-Value="@JobCategoryId">
+                @foreach (var jobCategory in JobCategories)
+                        {
+                <option value="@jobCategory.JobCategoryId">@jobCategory.JobCategoryName</option>
+                        }
+            </InputSelect>
+        </div>
+
+        <div class="form-group row">
+            <label for="gender" class="col-sm-3">Gender: </label>
+            <InputSelect id="gender" class="form-control col-sm-8" @bind-Value=@Employee.Gender>
+                <option value="@(Gender.Male)">Male</option>
+                <option value="@(Gender.Female)">Female</option>
+                <option value="@(Gender.Other)">Other</option>
+            </InputSelect>
+        </div>
     </EditForm>
 </section>
