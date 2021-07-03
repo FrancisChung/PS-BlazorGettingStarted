@@ -1,6 +1,8 @@
 ﻿@page "/employeeedit" 
 @page "/employeeedit/{EmployeeId}"
 
+@using BethanysPieShopHRM.Shared
+
 <section class="employee-edit">
     <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
     <EditForm Model="@Employee">
