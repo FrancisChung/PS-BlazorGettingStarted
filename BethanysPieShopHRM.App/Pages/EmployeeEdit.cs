@@ -30,8 +30,14 @@ namespace BethanysPieShopHRM.App.Pages
         protected string CountryId = string.Empty;
         protected string JobCategoryId = string.Empty;
 
+        //State of Screen
+        protected string Message = string.Empty;
+        protected string StatusClass = string.Empty;
+        protected bool Saved;
+
         protected override async Task OnInitializedAsync()
         {
+            Saved = false;
             Countries = (await CountryDataService.GetAllCountries()).ToList();
             JobCategories = (await JobCategoryDataService.GetAllJobCategories()).ToList();
 
@@ -49,17 +55,41 @@ namespace BethanysPieShopHRM.App.Pages
 
         protected async Task HandleValidSubmit()
         {
+            Saved = false;
             Employee.CountryId = int.Parse(CountryId);
             Employee.JobCategoryId = int.Parse(JobCategoryId);
             if (Employee.EmployeeId == 0)
             {
-                _ = await EmployeeDataService.AddEmployee(Employee);
+                var addedEmployee = await EmployeeDataService.AddEmployee(Employee);
+                if (addedEmployee != null)
+                {
+                    StatusClass = "alert-success";
+                    Message = "New Employee added successfully";
+                    Saved = true;
+                }
+                else
+                {
+                    StatusClass = "alert-danger";
+                    Message = "Error occurred whilst adding the new Employee. Please try again and inform IT if error persists.";
+                    Saved = false;
+                }
+
+
             }
             else
+            {
                 await EmployeeDataService.UpdateEmployee(Employee);
+                StatusClass = "alert-success";
+                Message = "Employee updated successfully";
+                Saved = true;
+            }
         }
 
-        protected async Task HandleInvalidSubmit() { }
+        protected async Task HandleInvalidSubmit() 
+        {
+            StatusClass = "alert-danger";
+            Message = "There were some validation errors. Please try again and inform IT if error persists.";
+        }
 
     }
 }
