@@ -101,6 +101,14 @@
             </div>
 
             <button type="submit" class="btn btn-primary edit-btn">Save Employee</button>
+
+            @if (Employee.EmployeeId) > 0
+            {
+                <a class="btn btn-danger" @onclick="@DeleteEmployee">
+                    Delete
+                </a>
+            }
+            
         </EditForm>
     </section>
 }
