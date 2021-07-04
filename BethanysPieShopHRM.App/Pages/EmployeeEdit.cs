@@ -91,5 +91,15 @@ namespace BethanysPieShopHRM.App.Pages
             Message = "There were some validation errors. Please try again and inform IT if error persists.";
         }
 
+        protected async Task DeleteEmployee()
+        {
+            await EmployeeDataService.DeleteEmployee(Employee.EmployeeId);
+
+            StatusClass = "alert-success";
+            Message = "Employee Deleted Successfully";
+
+            Saved = true;
+        }
+
     }
 }
