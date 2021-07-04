@@ -19,6 +19,9 @@ namespace BethanysPieShopHRM.App.Pages
         [Inject]
         public IJobCategoryDataService JobCategoryDataService { get; set; }
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
         [Parameter]
         public string EmployeeId { get; set; }
 
@@ -99,6 +102,11 @@ namespace BethanysPieShopHRM.App.Pages
             Message = "Employee Deleted Successfully";
 
             Saved = true;
+        }
+
+        protected async Task NavigateToOverview()
+        {
+            NavigationManager.NavigateTo("/employeeoverview");
         }
 
     }
