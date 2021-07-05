@@ -21,8 +21,13 @@ namespace BethanysPieShopHRM.App.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
+            await RefreshEmployees();
             //return base.OnInitializedAsync();
+        }
+
+        private async Task RefreshEmployees()
+        {
+            Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
 
         protected void QuickAddEmployee()
@@ -30,6 +35,10 @@ namespace BethanysPieShopHRM.App.Pages
             AddEmployeeDialog.Show();
         }
 
-
+        public async void AddEmployeeDialog_OnDialogClose()
+        {
+            await RefreshEmployees();
+            StateHasChanged();
+        }
 	}
 }
