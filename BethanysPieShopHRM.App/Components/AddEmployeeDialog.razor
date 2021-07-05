@@ -11,7 +11,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <EditForm Model="@Employee">
+                    <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit">
 
                         <DataAnnotationsValidator />
                         <ValidationSummary />

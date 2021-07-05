@@ -39,6 +39,13 @@ namespace BethanysPieShopHRM.App.Components
         {
             return new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
         }
+
+        public async Task HandleValidSubmit()
+        {
+            await EmployeeDataService.AddEmployee(Employee);
+            ShowDialog = false;
+            StateHasChanged();
+        }
           
     }
 }
