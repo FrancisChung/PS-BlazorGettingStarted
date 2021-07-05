@@ -16,5 +16,29 @@ namespace BethanysPieShopHRM.App.Components
         public IEmployeeDataService EmployeeDataService { get; set; }
 
         public bool ShowDialog { get; set; }
+
+        public void Show()
+        {
+            ResetDialog();
+            ShowDialog = true;
+            StateHasChanged();
+        }
+
+        public void Close()
+        {
+            ShowDialog = false;
+            StateHasChanged();
+        }
+
+        public void ResetDialog()
+        {
+            Employee = DefaultEmployee();
+        }
+
+        public Employee DefaultEmployee()
+        {
+            return new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+        }
+          
     }
 }
