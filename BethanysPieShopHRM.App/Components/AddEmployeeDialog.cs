@@ -17,6 +17,9 @@ namespace BethanysPieShopHRM.App.Components
 
         public bool ShowDialog { get; set; }
 
+        [Parameter]
+        public EventCallback<bool> CloseEventCallback { get; set; }
+
         public void Show()
         {
             ResetDialog();
@@ -44,6 +47,8 @@ namespace BethanysPieShopHRM.App.Components
         {
             await EmployeeDataService.AddEmployee(Employee);
             ShowDialog = false;
+
+            await CloseEventCallback.InvokeAsync(true);
             StateHasChanged();
         }
           
