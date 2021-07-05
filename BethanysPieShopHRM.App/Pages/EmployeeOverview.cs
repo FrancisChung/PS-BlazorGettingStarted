@@ -25,6 +25,11 @@ namespace BethanysPieShopHRM.App.Pages
             //return base.OnInitializedAsync();
         }
 
+        protected void QuickAddEmployee()
+        {
+            AddEmployeeDialog.Show();
+        }
+
 
 	}
 }
