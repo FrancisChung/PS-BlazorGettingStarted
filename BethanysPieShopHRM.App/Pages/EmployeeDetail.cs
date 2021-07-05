@@ -14,7 +14,7 @@ namespace BethanysPieShopHRM.App.Pages
         [Parameter]
         public string EmployeeId { get; set; }
         public Employee Employee { get; set; } = new Employee();
-        public List<Marker> MapMarkers { get; set; }
+        public List<Marker> MapMarkers { get; set; }  = new List<Marker>();
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
         protected override async Task OnInitializedAsync()
