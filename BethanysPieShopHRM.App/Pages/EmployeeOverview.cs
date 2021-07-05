@@ -35,6 +35,7 @@ namespace BethanysPieShopHRM.App.Pages
             AddEmployeeDialog.Show();
         }
 
+        
         public async void AddEmployeeDialog_OnDialogClose()
         {
             await RefreshEmployees();
