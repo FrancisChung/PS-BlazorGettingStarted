@@ -14,5 +14,7 @@ namespace BethanysPieShopHRM.App.Components
 
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
+
+        public bool ShowDialog { get; set; }
     }
 }
